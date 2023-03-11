@@ -6,7 +6,8 @@
     border-radius: 15px;
     padding: 10px;
     gap: 14px;
-    margin-top: 60px;
+    margin: 0 60px 10px;
+    
 
     background-color:rgba($color: white, $alpha: 0.25);
     backdrop-filter: blur(4px);
@@ -62,4 +63,30 @@
     box-shadow: 0px 7px 15px rgba(black, .3);
 }
 // END OF TAB TILE BACKGROUND "SHAPE" STYLES
+
+//STYLES FOR THE 'UNDERLINE SELECTED' EFFECT
+
+.tab::after {
+    content: '';
+    position: absolute;
+    border-radius: 2px;
+    height: 3px;
+    width: 60%;
+
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    bottom: -7px;
+    background-color: rgba(white, .8);
+    //hide by default (not selected)
+    opacity: 0;
+    transform: scaleX(0);
+} 
+.tab.selected::after {
+    opacity: 1;
+    transform: scaleX(1);
+    transition-delay: .18s;
+}
+
 
