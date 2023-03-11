@@ -2,7 +2,12 @@
 
 ### The purpose of this project is to learn and apply the basics of the Angular framework as well as the css super-type, scss (Sassy Cascading Style Sheets). My plan for this repo is to make every 'major' addition/feature of this project its own branch, where I will document what I have learned while working on that portion of the project in a branch-specific README. I may consolidate the READMEs into this file once I have completed the project.
 
-Part 1:  
+# Notes
+
+## Part 1:
+
+### <ins>SCSS, html and intro to components.</ins>
+
 -start new angular project with scss: 'ng new Project-Name --style=scss --routing'
 
 -SCSS allows for nested styling  
@@ -46,19 +51,21 @@ creates new 'tabs folder in the 'app' folder.'
 ```
 
 ```html
-<div class="tab">
-  <div class="tab-tile">
-    <i class="material-icons-outlined">check</i>
+<div class="tabs-container">
+  <div class="tab bookmarks-tab">
+    <div class="tab-tile">
+      <i class="material-icons-outlined">bookmarks</i>
+    </div>
   </div>
-</div>
-<div class="tab">
-  <div class="tab-tile">
-    <i class="material-icons-outlined">bookmarks</i>
+  <div class="tab todos-tab">
+    <div class="tab-tile">
+      <i class="material-icons-outlined">check</i>
+    </div>
   </div>
-</div>
-<div class="tab">
-  <div class="tab-tile">
-    <i class="material-icons-outlined">notes</i>
+  <div class="tab notes-tab">
+    <div class="tab-tile">
+      <i class="material-icons-outlined">notes</i>
+    </div>
   </div>
 </div>
 ```
@@ -71,4 +78,54 @@ background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 background-attachment: fixed;
+```
+
+### <ins>Routes and routerLink</ins>
+
+-Setting routes in src/app/app-routing.module.ts after creating bookmars, todos and notes components.
+
+```ts
+import { BookmarksComponent } from "./bookmarks/bookmarks.component";
+import { NotesComponent } from "./notes/notes.component";
+import { TodosComponent } from "./todos/todos.component";
+
+const routes: Routes = [
+  { path: "bookmarks", component: BookmarksComponent },
+  { path: "todos", component: TodosComponent },
+  { path: "notes", component: NotesComponent },
+];
+```
+
+Changing tabs from divs to anchors. Setting <ins>routerLink</ins> properties accordingly. Set <ins>routerLinkActive</ins> to "selected" so the selected class appears on the element when clicked.
+
+```html
+<div class="tabs-container">
+  <a
+    routerLink="bookmarks"
+    routerLinkActive="selected"
+    class="tab bookmarks-tab"
+  >
+    <div class="tab-tile">
+      <i class="material-icons-outlined">bookmarks</i>
+    </div>
+  </a>
+  <a routerLink="todos" routerLinkActive="selected" class="tab todos-tab">
+    <div class="tab-tile">
+      <i class="material-icons-outlined">check</i>
+    </div>
+  </a>
+  <a routerLink="notes" routerLinkActive="selected" class="tab notes-tab">
+    <div class="tab-tile">
+      <i class="material-icons-outlined">notes</i>
+    </div>
+  </a>
+</div>
+```
+
+Now I can start to style the selected tile to be circular.
+
+```scss
+.tab.selected .tab-tile::before {
+  border-radius: 50%;
+}
 ```
