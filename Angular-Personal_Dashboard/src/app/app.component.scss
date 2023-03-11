@@ -1,12 +1,17 @@
 .main {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: deepskyblue;
-    height: 100%;
+    
+    background-image: url('https://images.unsplash.com/photo-1678106761955-77e51d446699?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2160&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3ODQ5MjkwNA&ixlib=rb-4.0.3&q=80&w=3840');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .top-section-timeDate {
-    background-color: purple;
+    background-color: rgba(purple, .5);
     text-align: center;
     padding: 100px 0 50px;
 
@@ -19,13 +24,18 @@
     h2{
         font-size: 30px;
         color: white;
-        text-shadow: 0px 1px 7px rgba(black, 0.2);
+        text-shadow: 0px 1px 7px rgba(black, 0.1);
     }
 }
-.middle-section-bookmarks {
-    background-color: darkgreen;
+.middle-section-content {
+    background-color: rgba(darkgreen, .1);
     flex-grow: 1;
 }
 .bottom-section-tabMenu {
-    background-color: darkred;
+    background-color: rgba($color: darkred, $alpha: .1);
+    display: flex;
+
+    app-tabs {
+        margin: auto
+    }
 }
