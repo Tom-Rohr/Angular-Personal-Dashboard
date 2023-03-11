@@ -1,6 +1,6 @@
 # Angular-Personal-Dashboard
 
-# Part 1 Notes
+## Part 1 Notes
 
 ### <ins>SCSS, html and intro to components.</ins>
 
