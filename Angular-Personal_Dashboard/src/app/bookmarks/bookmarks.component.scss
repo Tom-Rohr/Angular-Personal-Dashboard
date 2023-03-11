@@ -3,15 +3,8 @@
     background-color: grey;
 }
 
-
-.bookmark-tile {
-    background: rgba(black, 0.8);
-
+.bookmarks-tiles-container {
     display: flex;
+    gap: .5rem;
     justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-
 }
-
