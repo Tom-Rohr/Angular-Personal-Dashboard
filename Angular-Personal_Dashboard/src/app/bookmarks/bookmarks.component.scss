@@ -1,0 +1,17 @@
+.bookmarks-wrapper {
+    height: 100%;
+    background-color: grey;
+}
+
+
+.bookmark-tile {
+    background: rgba(black, 0.8);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+
+}
+

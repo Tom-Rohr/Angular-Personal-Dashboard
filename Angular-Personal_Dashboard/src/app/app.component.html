@@ -1,10 +1,12 @@
 <div class="main">
-  <router-outlet></router-outlet>
   <div class="top-section-timeDate">
     <h1>42:42</h1>
     <h2>10 March 2023</h2>
   </div>
-  <div class="middle-section-content"></div>
+  <div class="middle-section-content">
+    <router-outlet></router-outlet>
+    <!-- <app-bookmarks></app-bookmarks> DO NOT NEED IF USING ANGULAR 'wrapper' keyword in class. See bookmarks.component.html-->
+  </div>
   <div class="bottom-section-tabMenu">
     <app-tabs></app-tabs>
   </div>
