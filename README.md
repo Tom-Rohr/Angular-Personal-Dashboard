@@ -1,6 +1,6 @@
 # Angular-Personal-Dashboard
 
-## <ins>Bookmarks GUI</ins>
+## <ins>GUI</ins>
 
 -Using SCSS feature to write &:hover and &:active as nested styles instead of having to use new blocks.
 
@@ -67,4 +67,71 @@ bookmarks.component.scss
 }
 ```
 
-## <ins>Todos GUI</ins>
+## <ins>Route Transition Animations</ins>
+
+-Declaring route animations at component injection element (div containing router-outlet).  
+and creating a template variable named "outlet", storing the router-outlet element, that will be passed to the prepareRoute(RouterOutlet) method.
+
+app.component.html
+
+```html
+<div class="main">
+  <div class="top-section-timeDate">
+    <h1>42:42</h1>
+    <h2>10 March 2023</h2>
+  </div>
+  <div class="middle-section-content" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+  <div class="bottom-section-tabMenu">
+    <app-tabs></app-tabs>
+  </div>
+</div>
+```
+
+-Creating prepareRoute method. Need to add import statements to use RouterOutlet and trigger().
+
+-setting up trigger named 'routeAnimations' that takes an array of animation meta-data.
+
+added to <ins>app.component.ts</ins>. Deleted default export class AppComponent implementation.
+
+```ts
+import {
+  animate,
+  query,
+  style,
+  transition,
+  trigger,
+} from "@angular/animations"; //<-- Not imported by default
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
+  animations: [trigger("routeAnimations", [])],
+})
+export class AppComponent {
+  prepareRoute(outlet: RouterOutlet) {
+    if (outlet.isActivated) {
+      return outlet.activatedRoute.snapshot.url;
+    } else return outlet.deactivate(); //<--Bandaid fix.
+  }
+}
+```
+
+-Add import statement to app.module.ts
+-add to imports: [...,..,..]
+
+```ts
+import { BrowserAnimationsModule } from '@angular/platform-browser-animations';
+ //...
+   imports: [
+    BrowserModule,
+    AppRoutingModule
+    BrowserAnimationsModule //<---
+  ],
+  //...
+
+```

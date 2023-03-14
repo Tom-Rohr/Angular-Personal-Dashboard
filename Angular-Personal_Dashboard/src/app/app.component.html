@@ -3,9 +3,8 @@
     <h1>42:42</h1>
     <h2>10 March 2023</h2>
   </div>
-  <div class="middle-section-content">
-    <router-outlet></router-outlet>
-    <!-- <app-bookmarks></app-bookmarks> DO NOT NEED IF USING ANGULAR 'wrapper' keyword in class. See bookmarks.component.html-->
+  <div class="middle-section-content" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
   <div class="bottom-section-tabMenu">
     <app-tabs></app-tabs>
