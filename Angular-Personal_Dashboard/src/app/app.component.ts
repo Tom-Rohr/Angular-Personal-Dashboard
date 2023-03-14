@@ -9,9 +9,6 @@ import { RouterOutlet } from '@angular/router';
   animations:[
     trigger('routeAnimations', [    //<---Trigger
       transition('* => *', [
-        // style({
-        //   position: 'relative'
-        // }),
         query(':enter, :leave', [
           style({
             position: 'absolute',
@@ -19,20 +16,22 @@ import { RouterOutlet } from '@angular/router';
             height: '100%'
           })
         ],{optional: true}),
-        query(':enter', [
-          style({
-            opacity: 0,
-          })
-        ],{optional: true}),
         group([
           query(':leave', [
-            animate(200, style({
-              opacity: 0
+            animate('300ms ease-in', style({
+
+              opacity: 0,
+              transform: 'translateX(-100px)' //<-- Setting position to move to by the time the element completely disappears
             }))
           ], {optional: true}),
           query(':enter', [
-            animate(200, style({
-              opacity: 1
+            style({
+              transform: 'translateX(100px)', //<-- Setting where to start animation relative to element's position
+              opacity: 0
+            }),
+            animate('300ms ease-in', style({
+              opacity: 1,
+              transform: 'translateY(0)' //<-- Setting position of element at end of animation
             }))
           ], {optional: true})
         ]),

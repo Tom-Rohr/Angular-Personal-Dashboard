@@ -33,6 +33,7 @@
     flex-grow: 1;
     min-height: 0; //Stops menu from being pushed down and lets me enable scroll bar on y-overflow in bookmarks.component.scss
     position: relative;
+    overflow: hidden; 
 }
 .bottom-section-tabMenu {
     //background-color: rgba(darkred, .1);
