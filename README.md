@@ -175,7 +175,7 @@ transition(':decrement', [ //<---USE TAB NAMES TO ASSIGN ANIMATIONS FOR TRANSITI
         ],{optional: true}),
         group([
           query(':leave', [
-            animate('300ms ease-in', style({
+            animate('250ms ease-in', style({
 
               opacity: 0,
               transform: 'translateX(100px)' //<-- Setting position to move to by the time the element completely disappears
@@ -186,7 +186,7 @@ transition(':decrement', [ //<---USE TAB NAMES TO ASSIGN ANIMATIONS FOR TRANSITI
               transform: 'translateX(-100px)', //<-- Setting where to start animation relative to element's position
               opacity: 0
             }),
-            animate('300ms ease-in', style({
+            animate('250ms 100ms ease-in', style({
               opacity: 1,
               transform: 'translateX(0)' //<-- Setting position of element at end of animation
             }))
