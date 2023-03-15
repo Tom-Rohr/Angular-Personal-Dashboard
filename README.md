@@ -136,6 +136,60 @@ import { BrowserAnimationsModule } from '@angular/platform-browser-animations';
 
 ```
 
-```ts
+in app-routing-modules.ts  
+giving routes identifier to use in animations unique to the route change(slide in from left or right).
 
+```ts
+const routes: Routes = [
+  {
+    path: "bookmarks",
+    component: BookmarksComponent,
+    data: { tab: "bookmarks" },
+  },
+  { path: "todos", component: TodosComponent, data: { tab: "todos" } },
+  { path: "notes", component: NotesComponent, data: { tab: "notes" } },
+];
+```
+
+in app-components.ts  
+change to ID the route by property created above ('tab')
+
+```ts
+export class AppComponent {
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet.activatedRouteData["tab"];
+  }
+}
+```
+
+One of the two transitions statements. This one is for transitions to the left. The translate right is exactly the same other than ':increment' is the parameter used in transition() and the translateX() values are reversed.
+
+```ts
+transition(':decrement', [ //<---USE TAB NAMES TO ASSIGN ANIMATIONS FOR TRANSITIONING LEFT TO RIGHT AND RIGHT TO LEFT.
+        query(':enter, :leave', [
+          style({
+            position: 'absolute',
+            width: '100%',
+            height: '100%'
+          })
+        ],{optional: true}),
+        group([
+          query(':leave', [
+            animate('300ms ease-in', style({
+
+              opacity: 0,
+              transform: 'translateX(100px)' //<-- Setting position to move to by the time the element completely disappears
+            }))
+          ], {optional: true}),
+          query(':enter', [
+            style({
+              transform: 'translateX(-100px)', //<-- Setting where to start animation relative to element's position
+              opacity: 0
+            }),
+            animate('300ms ease-in', style({
+              opacity: 1,
+              transform: 'translateX(0)' //<-- Setting position of element at end of animation
+            }))
+          ], {optional: true})
+        ]),
 ```
