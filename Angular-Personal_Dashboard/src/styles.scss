@@ -44,3 +44,34 @@ html, body {
   width: 45vw;
   margin: auto;
 }
+
+.btn {
+  display: flex;
+  align-items: center;
+  cursor:pointer;
+  padding: 10px 20px;
+  background: rgba(black, .55);
+  color: white;
+  font-size: 18px;
+  font-weight: 550;
+  border-radius: 8px;
+  transition: 0.15s;
+
+  &:hover {
+    background-color: rgba(black, .7);
+    backdrop-filter: blur(3px);
+  }
+
+  &:active {
+    background: rgba(black, .9);
+  }
+}
+
+.btns-container {
+  display: flex;
+  margin-top: 10px;
+
+  &.btns-centered {
+    justify-content: center;
+  }
+}
