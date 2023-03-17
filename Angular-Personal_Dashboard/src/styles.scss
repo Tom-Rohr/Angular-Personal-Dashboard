@@ -40,6 +40,12 @@ html, body {
     font-family: "inter", sans-serif;
 }
 
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
 .container {
   width: 45vw;
   margin: auto;
@@ -74,4 +80,37 @@ html, body {
   &.btns-centered {
     justify-content: center;
   }
+  .align-end {
+    margin-left: auto;
+  }
+}
+
+.has-blurred-white-bg {
+  background: rgba(white, 0.8);
+  backdrop-filter: blur(15px);
+}
+
+.textbox,
+.textarea {
+  display: block;
+  font-size: 16px;
+  padding: 8px 2px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-radius: 3px;
+  outline-style: solid;
+  outline-width: 1px;
+  background: rgba(white, 0.8);
+
+    &:hover {
+      background: rgba(white, 0.9);
+    }
+    &:focus {
+      background: rgba(white, 1);
+      outline-width: 2px;
+    }
+}
+.textarea {
+  resize: vertical;
+  min-height: 150px;
 }
