@@ -3,32 +3,11 @@
     overflow-y: auto;
 }
 
-.note-card {
-    background-color: rgba(black, 0.55);
-    color: rgba(white, 0.95);
-    border-radius: 10px;
-    padding: 20px;
-    cursor: pointer;
-    transition: 0.15s;
-
-    &:hover {
-        background-color: rgba(black, .7);
-        backdrop-filter: blur(3px);
-    }
-}
-
-.note-card-title {
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-color: rgba(white, 0.5);
-    text-decoration-thickness: 1px;
-}
-.note-card-content {
-    margin-top: 5px;
-}
-
 .add-btn i {
     margin-right: 5px;
     margin-left: -7px;
+}
+app-note-card {
+    display:block;
+    margin-bottom: 10px;
 }
