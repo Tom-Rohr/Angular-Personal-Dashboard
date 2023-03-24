@@ -1,6 +1,7 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
-import { Component, Query } from '@angular/core';
+import { Component, OnInit, Query } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Observable, map, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -67,7 +68,17 @@ import { RouterOutlet } from '@angular/router';
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  
+dateTime?: Observable<Date>
+
+  ngOnInit(): void {
+
+    this.dateTime = timer(0, 1000).pipe(
+      map(() => new Date())
+    )
+  }
+
   prepareRoute(outlet: RouterOutlet){
       return outlet.activatedRouteData['tab']
   }

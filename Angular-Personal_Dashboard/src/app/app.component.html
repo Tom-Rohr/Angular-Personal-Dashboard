@@ -1,7 +1,9 @@
 <div class="main">
   <div class="top-section-timeDate">
-    <h1>42:42</h1>
-    <h2>10 March 2023</h2>
+    <!-- <h1>42:42</h1>
+    <h2>10 March 2023</h2> -->
+    <h1>{{ dateTime | async | date : "shortTime" }}</h1>
+    <h2>{{ dateTime | async | date : "longDate" }}</h2>
   </div>
   <div class="middle-section-content" [@routeAnimations]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
