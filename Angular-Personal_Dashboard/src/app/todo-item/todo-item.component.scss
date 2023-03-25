@@ -1,0 +1,60 @@
+.todo-item {
+    background-color: rgba(black, 0.55);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    cursor: arrow;
+    transition: .15s;
+
+    display: flex;
+    align-items: center;
+}
+
+.todo-text {
+    color: rgba(white, .85);
+}
+
+.check-box {
+    padding: 3px;
+    border: 3px solid rgba(white, 0.5);
+    border-radius: 50%;
+    margin-right: 12px;
+    cursor: pointer;
+
+    display: flex; // Needed flex to make border perfectly round because check-mark icon is 36x40.
+
+    i {
+        opacity: 0;
+    }
+}
+.todo-item:hover {
+    .todo-text{
+        color: rgba(white, 1);
+    }
+    background-color: rgba(black, .7);
+    backdrop-filter: blur(3px);
+}
+.check-box:hover{
+    background-color: rgba(white, .5);
+    i {
+        opacity: .3;
+    }
+}
+
+.todo-item.completed {
+    .todo-text {
+        color: rgba(white, 0.7);
+    }
+    .check-box {
+        background: rgba(#06db34, 1.0);
+        border-color: transparent;
+        i {
+            opacity: 1;
+        }
+    }
+}
+
+.todo-text,
+.check-box {
+    transition: .15s;
+}
