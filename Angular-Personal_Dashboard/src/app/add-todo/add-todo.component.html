@@ -1,0 +1,20 @@
+<div class="add-todo-wrapper has-blurred-white-bg container">
+  <h2>Add Todo</h2>
+  <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+    <div class="form-field">
+      <input
+        class="textbox"
+        ngModel
+        #textField="ngModel"
+        name="text"
+        type="text"
+        placeholder="Enter todo text..."
+        required
+      />
+    </div>
+    <div class="btns-container">
+      <button class="btn align-end">Create Todo</button>
+      <button routerLink="../" class="btn">Cancel</button>
+    </div>
+  </form>
+</div>
