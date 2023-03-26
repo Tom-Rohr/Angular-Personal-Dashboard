@@ -1,6 +1,9 @@
 <div class="bookmark-tile">
-  <div class="tile-icon">
-    <img [src]="tileIconSource" alt="" />
+  <div class="tile-icon" *ngIf="!faviconError">
+    <img [src]="tileIconSource" alt="" (error)="faviconError = true" />
+  </div>
+  <div class="tile-icon fallback" *ngIf="faviconError">
+    {{ bookmark.name[0].toUpperCase() }}
   </div>
   <p class="tile-text">{{ bookmark.name }}</p>
 </div>

@@ -12,6 +12,7 @@ export class BookmarkTileComponent implements OnInit {
   @Input() bookmark!: Bookmark;
   
   tileIconSource!: string;
+  faviconError?: boolean;
 
   constructor() {}
 
