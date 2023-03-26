@@ -1,8 +1,8 @@
 .bookmark-tile {
     background: rgba(black, 0.55);
     border-radius: 1rem;
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     padding: 8px;
 
     display: flex;
@@ -27,6 +27,11 @@
 .bookmark-tile img {
     max-width: 2rem;
     min-width: 2rem;
+}
+
+.tile-icon {
+    height: 32px;
+    width: 32px;
 }
 .tile-text {
     font-size: 14px;

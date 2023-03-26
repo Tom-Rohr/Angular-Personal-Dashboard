@@ -6,7 +6,11 @@ import { Bookmark } from './bookmark.model';
 })
 export class BookmarkService {
 
-  bookmarks!: Bookmark[]
+  bookmarks: Bookmark[] = [
+    new Bookmark('Reddit', 'https://reddit.com'),
+    new Bookmark('Google', 'https://Google.com'),
+    new Bookmark('YouTube', 'https://Youtube.com')
+  ];
 
   constructor() { }
 
