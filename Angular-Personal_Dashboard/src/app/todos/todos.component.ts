@@ -2,11 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../shared/todo.service';
 import { Todo } from '../shared/todo.model';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.scss']
+  styleUrls: ['./todos.component.scss'],
+  animations: [
+    trigger('todoItemAnimation', [
+      transition(':leave', [
+        animate(300, style({
+          opacity: 0, 
+          height: 0,
+          marginBottom: 0,
+          transform: 'translateX(-100%)'
+        }))
+      ])
+    ])
+  ]
 })
 export class TodosComponent implements OnInit{
 

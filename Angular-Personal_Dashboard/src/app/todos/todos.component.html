@@ -1,6 +1,7 @@
 <div class="todos-wrapper">
   <div class="container">
     <app-todo-item
+      @todoItemAnimation
       *ngFor="let todo of todos"
       [todo]="todo"
       (click)="toggleCompleted(todo)"
