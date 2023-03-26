@@ -10,8 +10,9 @@ export class TodoService {
     new Todo('Learn Angular'),
     new Todo('Learn Angular'),
     new Todo('Learn Angular'),
-    new Todo('Learn Angular')
-  ]
+    new Todo('Learn Angular'), 
+    new Todo('fgdssssssssggggg ggggggggg ggggggggg gggggggg ggggg gggggggs rrrrr rrrrrrrrrrrrrr rrrrrrrrrrrrrr rrrrrrrrrggggggggg gggggggggggggggggg ggggggggggggggggg gggggggggggg fgdssssssssggggggggg ggggggg gggggggggggggggggggggggggggsrrrrrrrrrrrrrrrrrrrrrrrrrr rrrrrrrrrrrrrrrrgggg ggggggggggggggggg ggggggggggggggggg gggggggggggggggggg')
+  ]  
 
   constructor() { }
   getTodos() {
