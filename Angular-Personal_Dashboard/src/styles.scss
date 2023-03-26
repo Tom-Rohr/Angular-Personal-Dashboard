@@ -116,3 +116,11 @@ h2 {
   resize: vertical;
   min-height: 150px;
 }
+.form-field {
+  margin-bottom: 25px;
+  label.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+}
