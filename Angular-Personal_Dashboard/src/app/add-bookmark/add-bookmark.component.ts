@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { BookmarkService } from '../shared/bookmark.service';
 import { Bookmark } from '../shared/bookmark.model';
 import { Router } from '@angular/router';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-add-bookmark',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddBookmarkComponent {
 
-  constructor(private bookmarkService: BookmarkService, private router: Router) { }
+  constructor(private bookmarkService: BookmarkService, private router: Router, private notificationService: NotificationService) { }
 
   onFormSubmit(form: NgForm) {
     if (form.invalid) return;
@@ -21,6 +22,7 @@ export class AddBookmarkComponent {
 
     this.bookmarkService.addBookmark(bookmark);
     this.router.navigateByUrl('/bookmarks');
+    this.notificationService.display('Bookmark added', 1500);
   }
 
 }

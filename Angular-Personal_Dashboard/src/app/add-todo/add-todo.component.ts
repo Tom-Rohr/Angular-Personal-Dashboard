@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Todo } from '../shared/todo.model';
 import { TodoService } from '../shared/todo.service';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -14,7 +15,8 @@ export class AddTodoComponent {
   
   constructor(
     private todoService: TodoService,
-    private router: Router) { }
+    private router: Router,
+    private notificationService: NotificationService) { }
 
 
   onFormSubmit(form: NgForm) {
@@ -23,5 +25,6 @@ export class AddTodoComponent {
     const todo = new Todo(form.value.text)
     this.todoService.addTodo(todo)
     this.router.navigateByUrl('/todos')
+    this.notificationService.display("Todo added", 1500)
   }
 }
