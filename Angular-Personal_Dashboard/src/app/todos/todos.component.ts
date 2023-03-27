@@ -46,5 +46,9 @@ export class TodosComponent implements OnInit{
     this.notificationService.display("Todo deleted", 1500)
   }
 
+  //'TrackBy' function used in component's html to prevent re-rendering of list items when the list is changed
+  trackById(index: number, todo: Todo) {
+    return todo.id
+  }
 
 }

@@ -2,7 +2,7 @@
   <div class="container">
     <app-todo-item
       @todoItemAnimation
-      *ngFor="let todo of todos"
+      *ngFor="let todo of todos; trackBy: trackById"
       [todo]="todo"
       (click)="toggleCompleted(todo)"
       (editClick)="onEditClick(todo)"

@@ -1,20 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Todo } from './todo.model';
+import { Subscription, fromEvent } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService {
+export class TodoService implements OnDestroy {
 
-  todos: Todo[] = [
-    new Todo('Learn Angular'),
-    new Todo('Learn Angular'),
-    new Todo('Learn Angular'),
-    new Todo('Learn Angular'), 
-    new Todo('fgdssssssssggggg ggggggggg ggggggggg gggggggg ggggg gggggggs rrrrr rrrrrrrrrrrrrr rrrrrrrrrrrrrr rrrrrrrrrggggggggg gggggggggggggggggg ggggggggggggggggg gggggggggggg fgdssssssssggggggggg ggggggg gggggggggggggggggggggggggggsrrrrrrrrrrrrrrrrrrrrrrrrrr rrrrrrrrrrrrrrrrgggg ggggggggggggggggg ggggggggggggggggg gggggggggggggggggg')
-  ]  
+  todos: Todo[] = []  
 
-  constructor() { }
+  storageListenSubscription: Subscription
+
+  constructor() {
+    this.loadState()
+    this.storageListenSubscription = fromEvent<StorageEvent>(window, 'storage')
+      .subscribe((event: StorageEvent) => {
+        if (event.key === 'todos') this.loadState()
+      }
+    )
+   }
+
+  ngOnDestroy(): void {
+    this.storageListenSubscription.unsubscribe()
+  }
   getTodos() {
     return this.todos
   }
@@ -25,6 +33,7 @@ export class TodoService {
 
   addTodo(todo: Todo) {
     this.todos.push(todo)
+    this.saveState()
   }
 
   updateTodo(id: string, changes: Partial<Todo>) {
@@ -33,6 +42,7 @@ export class TodoService {
       return
     }
     Object.assign(todo, changes)
+    this.saveState()
   }
 
   deleteTodo(id: string) {
@@ -41,5 +51,21 @@ export class TodoService {
       return
     }
     this.todos.splice(index, 1)
+    this.saveState()
+  }
+
+  saveState() {
+    localStorage.setItem('todos', JSON.stringify(this.todos))
+  }
+
+  loadState() {
+    try {
+      const todosInStorage = JSON.parse(localStorage.getItem('todos')!)
+      this.todos.length = 0
+      this.todos.push(...todosInStorage)
+    } catch (error) {
+      console.log('Error retrieving todos from local storage.')
+      console.log(error)
+    }
   }
 }
