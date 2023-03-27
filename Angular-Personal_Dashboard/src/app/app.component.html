@@ -1,7 +1,13 @@
 <div class="main">
+  <img [src]="background" class="background-img" (load)="onBackgroundLoad()" />
+  <div
+    class="btn change-background-btn"
+    (click)="changeBackgroundImg()"
+    *ngIf="!loadingBackground"
+  >
+    <i class="material-icons">refresh</i>
+  </div>
   <div class="top-section-timeDate">
-    <!-- <h1>42:42</h1>
-    <h2>10 March 2023</h2> -->
     <h1>{{ dateTime | async | date : "shortTime" }}</h1>
     <h2>{{ dateTime | async | date : "longDate" }}</h2>
   </div>

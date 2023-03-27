@@ -2,13 +2,19 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    
-    background-image: url('https://images.unsplash.com/photo-1501862700950-18382cd41497?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2160&ixid=MnwxfDB8MXxyYW5kb218MHx8bmlnaHQsd2lsZGVybmVzc2ctYXBpL3x8fHx8fDE2Nzg1Nzc3NTM&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=3840');
-    // https://awik.io/generate-random-images-unsplash-without-using-api/
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+}
+.background-img {
+    // https://awik.io/generate-random-images-unsplash-without-using-api/
+  position: fixed;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  z-index: -1;  
 }
 
 .top-section-timeDate {
@@ -31,7 +37,7 @@
 .middle-section-content {
     //background-color: rgba(darkgreen, .1);
     flex-grow: 1;
-    min-height: 0; //Stops menu from being pushed down and lets me enable scroll bar on y-overflow in bookmarks.component.scss
+    min-height: 0; //Stops menu from being pushed down and enables scroll bar on y-overflow (bookmarks.component.scss)
     position: relative;
     overflow: hidden; 
 }
@@ -41,5 +47,23 @@
 
     app-tabs {
         margin: auto
+    }
+}
+
+.change-background-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background: rgba(black, .1);
+    color: rgba(white, .8);
+
+    &:hover {
+        background: rgba(black, .4);
+        color: white;
+    }
+
+    &:active {
+        transform: translateY(2px);
     }
 }

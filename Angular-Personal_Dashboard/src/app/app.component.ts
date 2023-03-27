@@ -72,14 +72,32 @@ export class AppComponent implements OnInit {
   
 dateTime?: Observable<Date>
 
+background?: string
+loadingBackground: boolean = false
+
   ngOnInit(): void {
 
     this.dateTime = timer(0, 1000).pipe(
       map(() => new Date())
     )
+
+    this.changeBackgroundImg()
   }
 
   prepareRoute(outlet: RouterOutlet){
       return outlet.activatedRouteData['tab']
+  }
+
+  async changeBackgroundImg(){
+    this.loadingBackground = true
+    const result = await fetch('https://source.unsplash.com/random/3840x2160', {
+      method: 'HEAD' //get url of image
+    })
+    if (result.url === this.background) this.changeBackgroundImg()
+    this.background = result.url
+  }
+
+  onBackgroundLoad(){
+    this.loadingBackground = false
   }
 }
