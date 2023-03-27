@@ -1,9 +1,16 @@
 <div class="main">
-  <img [src]="background" class="background-img" (load)="onBackgroundLoad()" />
+  <img
+    [src]="background"
+    *ngFor="let background of backgrounds.reverse()"
+    class="background-img"
+    (load)="onBackgroundLoad($event)"
+    @backgroundAnimations
+  />
   <div
     class="btn change-background-btn"
     (click)="changeBackgroundImg()"
     *ngIf="!loadingBackground"
+    @fadeAnimation
   >
     <i class="material-icons">refresh</i>
   </div>

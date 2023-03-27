@@ -65,14 +65,34 @@ import { Observable, map, timer } from 'rxjs';
           ], {optional: true})
         ]),
       ])
-    ])
+    ]),
+
+    trigger('backgroundAnimations', [
+      transition(':leave', [
+        animate(1000, style({
+          opacity: 0
+        }))
+      ])
+    ]),
+
+    trigger('fadeAnimation', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(1000, style({
+          opacity: 1
+        }))
+      ])
+    ]),
+    
   ]
 })
 export class AppComponent implements OnInit {
   
 dateTime?: Observable<Date>
 
-background?: string
+backgrounds: string [] = [
+  // "https://images.unsplash.com/photo-1679171915269-07013ad0e524?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2160&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3OTk0OTA5Mw&ixlib=rb-4.0.3&q=80&w=3840"
+]
 loadingBackground: boolean = false
 
   ngOnInit(): void {
@@ -88,16 +108,25 @@ loadingBackground: boolean = false
       return outlet.activatedRouteData['tab']
   }
 
-  async changeBackgroundImg(){
+  async changeBackgroundImg(): Promise<void>{
     this.loadingBackground = true
     const result = await fetch('https://source.unsplash.com/random/3840x2160', {
       method: 'HEAD' //get url of image
     })
-    if (result.url === this.background) this.changeBackgroundImg()
-    this.background = result.url
+
+    const alreadyLoaded = this.backgrounds.includes(result.url)
+    if(alreadyLoaded){
+      return this.changeBackgroundImg()
+    }
+
+    this.backgrounds.push(result.url)
   }
 
-  onBackgroundLoad(){
+  onBackgroundLoad(imageEvent: Event){
+    const imageElement = imageEvent.target as HTMLImageElement
+    const source = imageElement.src
+
+    this.backgrounds = [source]
     this.loadingBackground = false
   }
 }
