@@ -21,7 +21,7 @@ export class BookmarkService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.storageListenSubscription.unsubscribe()
+    if (this.storageListenSubscription) this.storageListenSubscription.unsubscribe()
   }
 
   getBookmarks() {
