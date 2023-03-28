@@ -14,6 +14,7 @@ export class TodoService implements OnDestroy {
     new Todo('Add extra feature: Weather forecast in top left section of app.', '2'),
     new Todo('Add feature: Press escape to go to menu main pages.', '3'),
     new Todo('dark color background under background image so user isn\'t blinded during initial loading.', '4'),
+    new Todo('On notes page: Seperate  \'+ Add\' button from notes list to prevent it from overflowing with notes.', '5'),
   ]
 
   storageListenSubscription: Subscription
