@@ -5,7 +5,7 @@ export class Bookmark {
     name: string;
     url: URL;
 
-    constructor(name: string, url: string) {
+    constructor(name: string, url: string, cid?: string) {
         this.id = uuidv4();
         this.url = new URL(url);
 
