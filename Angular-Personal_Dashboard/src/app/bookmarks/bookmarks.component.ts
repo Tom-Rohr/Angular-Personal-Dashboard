@@ -13,8 +13,8 @@ bookmarks?: Bookmark[]
 
   constructor(private bookmarkService: BookmarkService) { }
 
-  ngOnInit(): void {
-    this.bookmarks = this.bookmarkService.getBookmarks();
+  async ngOnInit() {
+    this.bookmarks = await this.bookmarkService.getBookmarks();
   }
 
 }

@@ -27,8 +27,8 @@ export class TodosComponent implements OnInit{
   todos: Todo[] = []
 
   constructor(private todoService: TodoService, private router: Router, private notificationService: NotificationService) { }
-  ngOnInit(): void {
-    this.todos = this.todoService.getTodos()
+  async ngOnInit() {
+    this.todos = await this.todoService.getTodos()
   }
 
   toggleCompleted(todo: Todo) {
