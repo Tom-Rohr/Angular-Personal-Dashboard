@@ -5,8 +5,9 @@ export class Note {
     title: string
     content: string
 
-    constructor(title: string, content: string) {
-        this.id = uuidv4()
+    constructor(title: string, content: string, cid?: string) {
+        if(!cid) this.id = uuidv4()
+        else this.id = cid
         this.title = title
         this.content = content
     }
