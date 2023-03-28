@@ -4,7 +4,15 @@ export class Todo {
     id: string
     completed: boolean =false
 
-    constructor(public text: string) {
-        this.id = uuidv4()
+    constructor(public text: string, public cid?: string) {
+        if (!cid){
+            this.id = uuidv4()
+        } else {
+            this.id = cid
+        }
     }
+
+    /////////// FOR DEMO /////////////
+    setId(id: string): void {this.id = id}//
+    //////////////////////////////////
 }
