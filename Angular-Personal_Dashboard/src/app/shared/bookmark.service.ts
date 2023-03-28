@@ -19,6 +19,15 @@ export class BookmarkService implements OnDestroy {
     new Bookmark('Wikipedia', 'https://www.wikipedia.org', '7'),
     new Bookmark('Amazon', 'https://www.amazon.com', '8'),
     new Bookmark('Ebay', 'https://www.ebay.com', '9'),
+    new Bookmark('Tom\'s Netlify', 'https://app.netlify.com/teams/tom-rohr/overview', '10'),
+    new Bookmark('Can I Use?', 'https://caniuse.com', '11'),
+    new Bookmark('MDN Web Docs', 'https://developer.mozilla.org/en-US/', '12'),
+    new Bookmark('Angular', 'https://angular.io', '13'),
+    new Bookmark('Angular Material', 'https://material.angular.io', '14'),
+    new Bookmark('Angular CDK', 'https://material.angular.io/cdk/categories', '15'),
+    new Bookmark('RxJS', 'https://rxjs.dev', '16'),
+    new Bookmark('TypeScript', 'https://www.typescriptlang.org', '17'),
+    new Bookmark('Bootstrap', 'https://getbootstrap.com', '18'),
     
   ]
 
