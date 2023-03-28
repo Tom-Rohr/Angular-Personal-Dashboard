@@ -183,7 +183,7 @@ loadingBackground: boolean = false
 
   async changeBackgroundImg(): Promise<void>{
     this.loadingBackground = true
-    const result = await fetch('https://source.unsplash.com/random/3840x2160', {
+    const result = await fetch('https://source.unsplash.com/random/3840x2160/?nature', {
       method: 'HEAD' //get url of image
     })
 
