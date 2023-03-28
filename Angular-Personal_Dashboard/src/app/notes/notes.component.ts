@@ -14,7 +14,7 @@ export class NotesComponent implements OnInit{
   constructor(private noteService: NoteService) {
 
   }
-  ngOnInit(): void {
-    this.notes = this.noteService.getNotes()
+  async ngOnInit() {
+    this.notes = await this.noteService.getNotes()
   }
 }
